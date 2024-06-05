@@ -6,7 +6,10 @@ public class Decorator {
      * 裝飾器模式是一種結構型模式，它允許你動態地將新功能附加到對象上。
      * 這種模式的主要思想是將類別的物件包裝在裝飾器類別中，從而擴展原始類別的功能
      * point:
-     * 這樣的設計是組合優於繼承（composite over inheritance）的實現
+     *  1. 這樣的設計是組合優於繼承（composite over inheritance）的實現
+     *  2. 可依據需求疊加功能，保持其接口的完整性
+     *  3. 高度的靈活性和可擴展性
+     *  4. 符合開放封閉原則
      * native example:
      * 在 java.io 套件中，有些輸入輸出的功能修飾，就是採用 Decorator 來實現
      * FileReader 沒有緩衝區處理的功能，可以由 BufferedReader 提供，BufferedReader沒有改變 FileReader 的功能，
