@@ -23,6 +23,10 @@ public class Mediator {
      *  1. 單一中介者的複雜性：隨著系統中對象數量的增加，中介者對象可能會變得複雜，成為一個“上帝對象”，
      *      負責過多的行為，影響系統的可維護性。
      *  2. 降低透明性：由於對象之間的交互是通過中介者進行的，可能會降低系統的透明性，使得理解和追蹤系統行為變得困難
+     * another point:
+     *  Mediator 與其說是個模式，不如說像是迪米特法則（Law of Demeter）
+     *  這類的最少知識原則（Principle of least knowledge），
+     *  也就是「各單元對其他單元所知應當有限：只瞭解與目前單元最相關之單元」。
      */
     public static void main(String[] args) {
 
