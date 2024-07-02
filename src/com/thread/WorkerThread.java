@@ -39,37 +39,39 @@ public class WorkerThread {
         return newRunnable;
     }
 
-}
+    static class Worker extends Thread {
 
-class Worker extends Thread {
+        private BlockingQueue<Runnable> runnables;
 
-    private BlockingQueue<Runnable> runnables;
+        Worker(BlockingQueue<Runnable> runnables) {
+            this.runnables = runnables;
+        }
 
-    Worker(BlockingQueue<Runnable> runnables) {
-        this.runnables = runnables;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                runnables.take().run();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    runnables.take().run();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
-}
 
-class WorkerThreadService {
-    private static final BlockingQueue<Runnable> runnables = new LinkedBlockingQueue<>();
+    static class WorkerThreadService {
+        private static final BlockingQueue<Runnable> runnables = new LinkedBlockingQueue<>();
 
-    static {
-        new Worker(runnables).start();
+        static {
+            new com.thread.Worker(runnables).start();
+        }
+
+        static void submit(Runnable runnable) {
+            runnables.add(runnable);
+        }
+
     }
 
-    static void submit(Runnable runnable) {
-        runnables.add(runnable);
-    }
-
 }
+
+
