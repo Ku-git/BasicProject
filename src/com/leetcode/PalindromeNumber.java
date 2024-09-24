@@ -8,6 +8,11 @@ public class PalindromeNumber {
         System.out.println(isPalindrome(input));
     }
 
+    /**
+     * 轉成字串並拆分出char array, 並從第一個與最後一個比對,
+     * 依序漸進比對每個值,比對到中間的index代表前後都比對完了
+     * return true or false
+     */
     public static boolean isPalindrome(int x) {
         String input = String.valueOf(x);
         char[] chars = input.toCharArray();
